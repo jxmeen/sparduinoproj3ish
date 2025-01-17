@@ -1,3 +1,5 @@
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
 #define motor_board_input_pin_IN2 6      //Connect to Arduino pin 6
 #define motor_board_input_pin_IN1 9          //Connect to Arduino pin 9
 #define motor_board_input_pin_IN4 3      //Connect to Arduino pin 3
@@ -19,6 +21,7 @@ void IRSense(void);
 int getDistance(int EchoPin, int TrigPin);
 void stop(void);
 void bruhstop(void);
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup()
 {
@@ -32,6 +35,8 @@ void setup()
   pinMode(HitBPin, INPUT_PULLUP); 
   PCICR |= B00000100; 
   PCMSK2 |= B00010100; 
+  lcd.init();         
+  lcd.backlight();    
 }
  
 void loop()
@@ -41,6 +46,23 @@ Distance1 = getDistance(EchoPin1,TrigPin1);
 IR1_Val = analogRead(IR1Pin);
 IR2_Val = analogRead(IR2Pin);
 bruhstop();
+
+// Message 1
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Welcome to IED");
+  lcd.setCursor(0, 1);
+  lcd.print("We deliver");
+  delay(3000);         // Wait for 3 seconds
+ 
+  // Message 2
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Drink water");
+  lcd.setCursor(0, 1);
+  lcd.print("Stay healthy");
+  delay(3000);         // Wait for 3 seconds
+  
 }
  
 void Turn_left()
