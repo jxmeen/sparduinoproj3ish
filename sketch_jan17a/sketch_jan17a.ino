@@ -46,7 +46,7 @@ bruhstop();
 void Turn_left()
 {
   digitalWrite(motor_board_input_pin_IN2, HIGH);
-  analogWrite(motor_board_input_pin_IN1, 150); //motor A higher forward speed
+  analogWrite(motor_board_input_pin_IN1, 140); //motor A higher forward speed
   digitalWrite(motor_board_input_pin_IN3, LOW);
   analogWrite(motor_board_input_pin_IN4, 0);// motor B lower reverse speed
   delay(80);
@@ -56,16 +56,16 @@ void Turn_Right()
   digitalWrite(motor_board_input_pin_IN2, LOW);
   analogWrite(motor_board_input_pin_IN1, 0); //motor A lower forward speed
   digitalWrite(motor_board_input_pin_IN3, HIGH);
-  analogWrite(motor_board_input_pin_IN4, 150);// motor B higher reverse speed
+  analogWrite(motor_board_input_pin_IN4, 140);// motor B higher reverse speed
   delay(80);
 }
 
 void Go_straight()
 {
   digitalWrite(motor_board_input_pin_IN2, HIGH);
-  analogWrite(motor_board_input_pin_IN1, 190);
+  analogWrite(motor_board_input_pin_IN1, 180);
   digitalWrite(motor_board_input_pin_IN3, HIGH);
-  analogWrite(motor_board_input_pin_IN4, 190);
+  analogWrite(motor_board_input_pin_IN4, 180);
 }
 
 void IRSense()
