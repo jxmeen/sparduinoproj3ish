@@ -1,2 +1,3 @@
 # sparduinoproj3ish
-bruhhhhh
+funny arduino project
+SP moment
