@@ -16,9 +16,7 @@
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C lcd(0x27, 16, 2); // Initialize the I2C LCD with address 0x27, 16 columns, and 2 rows
  
-int counterA = 1, counterB = 1;
-int IR1_Val = 0;
-int IR2_Val = 0;
+int counterA = 1, counterB = 1, IR1_Val = 0, IR2_Val = 0;
 int Distance1, Distance2;
  
 #define LCDBacklightPin 6 // PWM pin for LCD backlight control
@@ -62,17 +60,18 @@ void loop() {
  
 void messageonlcd() {
   unsigned long currentMillis = millis();
- 
+
   if (currentMillis - previousMessageTime >= messageInterval) {
     previousMessageTime = currentMillis;
     lcd.clear();
- 
+
     if (currentMessage == 0) {
       lcd.setCursor(0, 0);
-      lcd.print("Welcome to IED");
+      lcd.print("Here is your");
       lcd.setCursor(0, 1);
-      lcd.print("We deliver");
+      lcd.print("medication");
       currentMessage = 1; // Move to next message
+
     } else if (currentMessage == 1) {
       lcd.setCursor(0, 0);
       lcd.print("Drink water");
@@ -82,7 +81,7 @@ void messageonlcd() {
     }
   }
 }
- 
+
  
 void Turn_left() {
   digitalWrite(motor_board_input_pin_IN2, HIGH);
